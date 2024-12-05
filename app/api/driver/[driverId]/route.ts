@@ -5,12 +5,13 @@ import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
-export async function GET(
+export async function POST(
   request: NextRequest,
   { params }: { params: { driverId: string } }
 ) {
   // Extract the dynamic parameter `driverId` from the route
   const { driverId } = params;
+  console.log("I am there")
 
   if (!driverId) {
     return NextResponse.json(

@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import backgroundImage from '/icons/poster1.png';
 
 export default () => {
-  const [email, setEmail] = useState("");
+   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -35,9 +35,13 @@ export default () => {
       console.log(response);
 
       // Assuming the response contains the JWT token & manager id in response.jwt
-      if (response.jwt && response.managerId) {
+      if (response.jwt && response.managerId && response.driver1Id && response.driver2Id) {
         localStorage.setItem("authToken", response.jwt);
         localStorage.setItem("managerId", response.managerId);
+
+          localStorage.setItem("driver1Id",response.driver1Id);
+          localStorage.setItem("driver2Id",response.driver2Id);
+        
       }
 
       // Redirect or perform other actions after a successful login
@@ -56,8 +60,7 @@ export default () => {
     }
   };
 
-  return (
-    <main className="w-full min-h-screen flex items-center overflow-hidden bg-blue-10">
+  return (<main className="w-full min-h-screen flex items-center overflow-hidden bg-blue-10">
       <section
         className="ml-5 w-1/2 h-[95vh] flex items-center justify-center rounded-md"
         style={{
